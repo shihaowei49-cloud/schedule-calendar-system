@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Schedule Calendar System</title>
+    <title>日程安排系统 - Schedule Calendar</title>
     <link rel="stylesheet" href="schedule-styles.css">
     <style>
         * {
@@ -13,7 +13,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
@@ -46,138 +46,138 @@
 <body>
     <div class="main-container">
         <div class="header">
-            <h1>📅 Schedule Calendar</h1>
-            <p>Plan your day, track your progress</p>
+            <h1>📅 日程安排系统</h1>
+            <p>记录每一天，规划每一刻</p>
         </div>
 
         <div class="schedule-calendar-view" id="scheduleCalendarView">
             <div class="schedule-header">
-                <h1>My Schedule</h1>
+                <h1>我的日程</h1>
             </div>
 
-            <p class="schedule-subtitle">Click on a date to view and edit schedule</p>
+            <p class="schedule-subtitle">点击日期查看和编辑当天的安排</p>
 
             <div class="schedule-calendar-controls">
-                <button id="schedulePrevMonth" class="schedule-nav-btn">← Previous</button>
+                <button id="schedulePrevMonth" class="schedule-nav-btn">← 上个月</button>
                 <h2 id="scheduleCurrentMonth"></h2>
-                <button id="scheduleNextMonth" class="schedule-nav-btn">Next →</button>
+                <button id="scheduleNextMonth" class="schedule-nav-btn">下个月 →</button>
             </div>
 
             <div class="schedule-calendar" id="scheduleCalendar"></div>
 
             <div class="schedule-recent-entries">
-                <h3>Recent Entries</h3>
+                <h3>最近的日程</h3>
                 <div id="scheduleRecentList"></div>
             </div>
         </div>
 
         <div class="schedule-edit-view" id="scheduleEditView" style="display: none;">
             <div class="schedule-edit-header">
-                <button class="schedule-back-btn" onclick="backToScheduleCalendar()">← Back</button>
-                <h1 id="scheduleEditDate">Schedule Details</h1>
+                <button class="schedule-back-btn" onclick="backToScheduleCalendar()">← 返回日历</button>
+                <h1 id="scheduleEditDate">日程详情</h1>
             </div>
 
             <form id="scheduleForm" class="schedule-form">
                 <section class="schedule-form-section">
-                    <h3>📝 Basic Info</h3>
+                    <h3>📝 基本信息</h3>
                     <div class="schedule-form-grid">
                         <div class="schedule-form-group schedule-full-width">
-                            <label for="scheduleTitle">Title *</label>
-                            <input type="text" id="scheduleTitle" name="title" placeholder="Today's theme..." required>
+                            <label for="scheduleTitle">标题 *</label>
+                            <input type="text" id="scheduleTitle" name="title" placeholder="今天的主题..." required>
                         </div>
 
                         <div class="schedule-form-group">
-                            <label for="scheduleMood">Mood</label>
+                            <label for="scheduleMood">心情状态</label>
                             <select id="scheduleMood" name="mood">
-                                <option value="">Select mood</option>
-                                <option value="😊">😊 Happy</option>
-                                <option value="😌">😌 Calm</option>
-                                <option value="😔">😔 Down</option>
-                                <option value="😤">😤 Anxious</option>
-                                <option value="🤔">🤔 Thinking</option>
+                                <option value="">选择心情</option>
+                                <option value="😊">😊 开心</option>
+                                <option value="😌">😌 平静</option>
+                                <option value="😔">😔 低落</option>
+                                <option value="😤">😤 焦虑</option>
+                                <option value="🤔">🤔 思考</option>
                             </select>
                         </div>
 
                         <div class="schedule-form-group">
-                            <label for="scheduleWeather">Weather</label>
+                            <label for="scheduleWeather">天气</label>
                             <select id="scheduleWeather" name="weather">
-                                <option value="">Select weather</option>
-                                <option value="☀️">☀️ Sunny</option>
-                                <option value="⛅">⛅ Cloudy</option>
-                                <option value="🌧️">🌧️ Rainy</option>
-                                <option value="❄️">❄️ Snowy</option>
-                                <option value="🌫️">🌫️ Foggy</option>
+                                <option value="">选择天气</option>
+                                <option value="☀️">☀️ 晴天</option>
+                                <option value="⛅">⛅ 多云</option>
+                                <option value="🌧️">🌧️ 下雨</option>
+                                <option value="❄️">❄️ 下雪</option>
+                                <option value="🌫️">🌫️ 雾霾</option>
                             </select>
                         </div>
                     </div>
                 </section>
 
                 <section class="schedule-form-section">
-                    <h3>⏰ Time Blocks</h3>
+                    <h3>⏰ 时间安排</h3>
                     <div class="schedule-time-blocks" id="scheduleTimeBlocks">
                         <div class="schedule-time-block">
                             <div class="schedule-form-grid">
                                 <div class="schedule-form-group">
-                                    <input type="time" name="timeStart[]" placeholder="Start time">
+                                    <input type="time" name="timeStart[]" placeholder="开始时间">
                                 </div>
                                 <div class="schedule-form-group">
-                                    <input type="time" name="timeEnd[]" placeholder="End time">
+                                    <input type="time" name="timeEnd[]" placeholder="结束时间">
                                 </div>
                                 <div class="schedule-form-group schedule-full-width-grid">
-                                    <input type="text" name="timeActivity[]" placeholder="Activity...">
+                                    <input type="text" name="timeActivity[]" placeholder="活动内容...">
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <button type="button" id="scheduleAddTimeBlock" class="schedule-add-btn">+ Add Time Block</button>
+                    <button type="button" id="scheduleAddTimeBlock" class="schedule-add-btn">+ 添加时间段</button>
                 </section>
 
                 <section class="schedule-form-section">
-                    <h3>✅ Tasks</h3>
+                    <h3>✅ 任务清单</h3>
                     <div class="schedule-tasks-container" id="scheduleTasksContainer">
                         <div class="schedule-task-item">
                             <input type="checkbox" name="taskDone[]" class="schedule-task-checkbox">
-                            <input type="text" name="taskContent[]" placeholder="Task description..." class="schedule-task-input">
+                            <input type="text" name="taskContent[]" placeholder="任务描述..." class="schedule-task-input">
                             <select name="taskPriority[]" class="schedule-task-priority">
-                                <option value="low">Low</option>
-                                <option value="medium">Medium</option>
-                                <option value="high">High</option>
+                                <option value="low">低</option>
+                                <option value="medium">中</option>
+                                <option value="high">高</option>
                             </select>
                         </div>
                     </div>
-                    <button type="button" id="scheduleAddTask" class="schedule-add-btn">+ Add Task</button>
+                    <button type="button" id="scheduleAddTask" class="schedule-add-btn">+ 添加任务</button>
                 </section>
 
                 <section class="schedule-form-section">
-                    <h3>📖 Notes</h3>
+                    <h3>📖 详细笔记</h3>
                     <div class="schedule-form-group schedule-full-width">
-                        <label for="scheduleNotes">Detailed notes</label>
-                        <textarea id="scheduleNotes" name="notes" rows="6" placeholder="Record your thoughts, ideas, important matters..."></textarea>
+                        <label for="scheduleNotes">详细笔记</label>
+                        <textarea id="scheduleNotes" name="notes" rows="6" placeholder="记录今天的想法、灵感、重要事项..."></textarea>
                     </div>
                 </section>
 
                 <section class="schedule-form-section">
-                    <h3>🎯 Goals & Summary</h3>
+                    <h3>🎯 目标 & 总结</h3>
                     <div class="schedule-form-group schedule-full-width">
-                        <label for="scheduleGoals">Goals completed today</label>
-                        <textarea id="scheduleGoals" name="goals" rows="3" placeholder="List goals or progress..."></textarea>
+                        <label for="scheduleGoals">今日完成的目标</label>
+                        <textarea id="scheduleGoals" name="goals" rows="3" placeholder="列出今天完成的目标或进展..."></textarea>
                     </div>
                     <div class="schedule-form-group schedule-full-width">
-                        <label for="scheduleTomorrow">Tomorrow's plan</label>
-                        <textarea id="scheduleTomorrow" name="tomorrow" rows="3" placeholder="Things to do tomorrow..."></textarea>
+                        <label for="scheduleTomorrow">明天计划</label>
+                        <textarea id="scheduleTomorrow" name="tomorrow" rows="3" placeholder="明天要做的事情..."></textarea>
                     </div>
                 </section>
 
                 <section class="schedule-form-section">
-                    <h3>🏷️ Tags</h3>
+                    <h3>🏷️ 标签</h3>
                     <div class="schedule-form-group schedule-full-width">
-                        <input type="text" id="scheduleTags" name="tags" placeholder="Add tags, comma separated, e.g: work, important, project-A">
+                        <input type="text" id="scheduleTags" name="tags" placeholder="添加标签，用逗号分隔，例如: 工作,重要,项目A">
                     </div>
                 </section>
 
                 <div class="schedule-form-actions">
-                    <button type="submit" class="schedule-save-btn">💾 Save</button>
-                    <button type="button" id="scheduleDeleteBtn" class="schedule-delete-btn">🗑️ Delete</button>
+                    <button type="submit" class="schedule-save-btn">💾 保存</button>
+                    <button type="button" id="scheduleDeleteBtn" class="schedule-delete-btn">🗑️ 删除</button>
                 </div>
             </form>
         </div>
