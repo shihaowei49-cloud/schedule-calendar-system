@@ -1,0 +1,503 @@
+/* 日程记事本系统样式 */
+
+.schedule-system-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.schedule-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 日历视图样式 */
+.schedule-calendar-view {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+}
+
+.schedule-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.schedule-header h1 {
+    font-size: 2.5em;
+    color: #667eea;
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.schedule-subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 1.1em;
+    margin-bottom: 40px;
+}
+
+.schedule-calendar-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 15px;
+    color: white;
+}
+
+.schedule-calendar-controls h2 {
+    font-size: 1.8em;
+    margin: 0;
+}
+
+.schedule-nav-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s;
+}
+
+.schedule-nav-btn:hover {
+    background: white;
+    color: #667eea;
+}
+
+.schedule-calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.schedule-day-header {
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    color: #667eea;
+    font-size: 1.1em;
+}
+
+.schedule-calendar-day {
+    aspect-ratio: 1;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    background: white;
+}
+
+.schedule-calendar-day:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    border-color: #667eea;
+}
+
+.schedule-calendar-day.has-entry {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: #667eea;
+}
+
+.schedule-calendar-day.today {
+    border: 3px solid #ff6b6b;
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+}
+
+.schedule-calendar-day.other-month {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.schedule-day-number {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.schedule-day-indicator {
+    font-size: 0.7em;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.schedule-recent-entries {
+    margin-top: 40px;
+}
+
+.schedule-recent-entries h3 {
+    color: #667eea;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.schedule-recent-item {
+    padding: 15px;
+    border-left: 4px solid #667eea;
+    background: #f8f9fa;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.schedule-recent-item:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+.schedule-recent-date {
+    font-weight: bold;
+    color: #667eea;
+    margin-bottom: 5px;
+}
+
+.schedule-recent-title {
+    color: #333;
+}
+
+/* 编辑视图样式 */
+.schedule-edit-view {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.schedule-edit-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.schedule-back-btn {
+    background: #6c757d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1em;
+}
+
+.schedule-back-btn:hover {
+    background: #5a6268;
+    transform: translateX(-5px);
+}
+
+.schedule-edit-header h1 {
+    color: #667eea;
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+}
+
+/* 表单样式 */
+.schedule-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.schedule-form-section {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 15px;
+    border-left: 5px solid #667eea;
+}
+
+.schedule-form-section h2 {
+    color: #667eea;
+    margin-bottom: 20px;
+    font-size: 1.4em;
+}
+
+.schedule-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.schedule-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.schedule-form-group.schedule-full-width,
+.schedule-form-group.schedule-full-width-grid {
+    grid-column: 1 / -1;
+}
+
+.schedule-form-group label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #495057;
+}
+
+.schedule-form-group input,
+.schedule-form-group select,
+.schedule-form-group textarea {
+    padding: 12px;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+.schedule-form-group input:focus,
+.schedule-form-group select:focus,
+.schedule-form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* 时间块 */
+.schedule-time-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.schedule-time-block {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #dee2e6;
+}
+
+/* 任务列表 */
+.schedule-tasks-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.schedule-task-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 10px;
+    align-items: center;
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.schedule-task-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.schedule-task-input {
+    padding: 8px 12px;
+    border: 2px solid #dee2e6;
+    border-radius: 6px;
+    font-size: 1em;
+}
+
+.schedule-task-priority {
+    padding: 8px 12px;
+    border: 2px solid #dee2e6;
+    border-radius: 6px;
+    font-size: 0.9em;
+    min-width: 100px;
+}
+
+/* 添加按钮 */
+.schedule-add-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 10px;
+    transition: all 0.3s;
+}
+
+.schedule-add-btn:hover {
+    background: #218838;
+    transform: translateY(-2px);
+}
+
+/* 表单操作按钮 */
+.schedule-form-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.schedule-save-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.schedule-save-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.schedule-delete-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.schedule-delete-btn:hover {
+    background: #c82333;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(220, 53, 69, 0.4);
+}
+
+/* 暗黑模式适配 */
+[data-theme="dark"] .schedule-calendar-view,
+[data-theme="dark"] .schedule-edit-view {
+    background: #1e1e1e;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .schedule-header h1,
+[data-theme="dark"] .schedule-recent-entries h3,
+[data-theme="dark"] .schedule-form-section h2,
+[data-theme="dark"] .schedule-edit-header h1 {
+    color: #8b8cf6;
+}
+
+[data-theme="dark"] .schedule-subtitle,
+[data-theme="dark"] .schedule-recent-title {
+    color: #b0b0b0;
+}
+
+[data-theme="dark"] .schedule-form-section {
+    background: #2a2a2a;
+}
+
+[data-theme="dark"] .schedule-calendar-day {
+    background: #2a2a2a;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .schedule-calendar-day:hover {
+    background: #333;
+}
+
+[data-theme="dark"] .schedule-time-block,
+[data-theme="dark"] .schedule-task-item {
+    background: #2a2a2a;
+    border-color: #444;
+}
+
+[data-theme="dark"] .schedule-form-group input,
+[data-theme="dark"] .schedule-form-group select,
+[data-theme="dark"] .schedule-form-group textarea {
+    background: #1e1e1e;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .schedule-recent-item {
+    background: #2a2a2a;
+    border-left-color: #8b5cf6;
+}
+
+[data-theme="dark"] .schedule-recent-item:hover {
+    background: #333;
+}
+
+[data-theme="dark"] .schedule-recent-date {
+    color: #8b5cf6;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .schedule-container {
+        padding: 10px;
+    }
+
+    .schedule-calendar-view,
+    .schedule-edit-view {
+        padding: 20px;
+    }
+
+    .schedule-header h1 {
+        font-size: 1.8em;
+    }
+
+    .schedule-calendar {
+        gap: 5px;
+    }
+
+    .schedule-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .schedule-calendar-controls {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .schedule-form-actions {
+        flex-direction: column;
+    }
+
+    .schedule-save-btn,
+    .schedule-delete-btn {
+        width: 100%;
+    }
+
+    .schedule-task-item {
+        grid-template-columns: auto 1fr;
+        gap: 8px;
+    }
+
+    .schedule-task-priority {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+}
