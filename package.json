@@ -1,7 +1,7 @@
 {
   "name": "schedule-calendar-system",
   "version": "1.0.0",
-  "description": "å‰’ûß - €Å„*ºå†¡åw",
+  "description": "Schedule Calendar System - Personal planner and diary",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
