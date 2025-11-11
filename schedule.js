@@ -408,3 +408,18 @@ function loadScheduleData(dateStr) {
         });
     }
 }
+
+// 页面加载完成后自动初始化
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('页面加载完成，开始初始化日程系统');
+    initScheduleSystem();
+});
+
+// 兼容性：如果DOMContentLoaded已经触发，立即初始化
+if (document.readyState === 'loading') {
+    // 文档还在加载中，等待DOMContentLoaded事件
+} else {
+    // 文档已经加载完成，立即初始化
+    console.log('文档已加载，立即初始化');
+    initScheduleSystem();
+}
